@@ -1,0 +1,25 @@
+{%- doc -%}
+  Renders a free delivery progress message for the cart.
+{%- enddoc -%}
+
+{%- liquid
+  assign threshold = 40000
+  assign remaining = threshold | minus: cart.total_price
+-%}
+
+{%- if cart.total_price > 0 -%}
+  <p class="free-delivery-progress" role="status">
+    {%- if remaining > 0 -%}
+      You're {{ remaining | money }} away from free UK delivery
+    {%- else -%}
+      You've unlocked free delivery 🎉
+    {%- endif -%}
+  </p>
+{%- endif -%}
+
+{% stylesheet %}
+  .free-delivery-progress {
+    margin: 0;
+    text-align: center;
+  }
+{% endstylesheet %}

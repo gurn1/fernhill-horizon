@@ -2116,5 +2116,30 @@
         "default": "equal-width-buttons"
       }
     ]
-  }
+  },
+  {
+  "name": "Free delivery message",
+  "settings": [
+    {
+      "type": "number",
+      "id": "free_delivery_threshold",
+      "label": "Free delivery threshold (£)",
+      "info": "Set to 0 to hide the message.",
+      "default": 40
+    },
+    {
+      "type": "text",
+      "id": "free_delivery_progress_text",
+      "label": "Message below threshold",
+      "info": "Use [amount] where the remaining amount should appear.",
+      "default": "You're [amount] away from free UK delivery"
+    },
+    {
+      "type": "text",
+      "id": "free_delivery_unlocked_text",
+      "label": "Message once unlocked",
+      "default": "You've unlocked free delivery 🎉"
+    }
+  ]
+}
 ]

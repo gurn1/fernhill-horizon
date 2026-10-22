@@ -1,18 +1,20 @@
 {%- doc -%}
   Renders a free delivery progress message for the cart.
+  The threshold and wording come from theme settings.
 {%- enddoc -%}
 
 {%- liquid
-  assign threshold = 10000
+  assign threshold = settings.free_delivery_threshold | times: 100
   assign remaining = threshold | minus: cart.total_price
 -%}
 
-{%- if cart.total_price > 0 -%}
+{%- if cart.total_price > 0 and threshold > 0 -%}
   <p class="free-delivery-progress" role="status">
     {%- if remaining > 0 -%}
-      You're {{ remaining | money }} away from free UK delivery
+      {%- assign amount = remaining | money -%}
+      {{ settings.free_delivery_progress_text | escape | replace: '[amount]', amount }}
     {%- else -%}
-      You've unlocked free delivery 🎉
+      {{ settings.free_delivery_unlocked_text | escape }}
     {%- endif -%}
   </p>
 {%- endif -%}
